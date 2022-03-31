@@ -1,5 +1,7 @@
 #include <iostream>
 #include <unistd.h>
+#include <windows.h>
+
 using namespace std;
 
 // variables
@@ -32,7 +34,7 @@ int main()
     do
     {
         board();
-
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
         cout << "Enter column to insert " << turn << " :- ";
         try
         {
@@ -51,15 +53,17 @@ int main()
         {
             if (n == 2)
             {
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
                 cout << "** Invalid Choice - Column is already full **\n";
-                sleep(1.5);
+                sleep(2);
             }
             else
             {
                 cin.clear();
                 cin.ignore();
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
                 cout << "************ Invalid Choice ************\n";
-                sleep(1);
+                sleep(2);
                 continue;
             }
         }
@@ -110,14 +114,17 @@ void greet()
     switch (winner)
     {
     case 1:
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
         cout << "\nPlayer X Won !\n";
         break;
 
     case 2:
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
         cout << "\nPlayer O Won !\n";
         break;
 
     case 3:
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
         cout << "\n\nMatch Was Draw !\n";
         break;
 
@@ -128,7 +135,7 @@ void greet()
     // Re - play
 
     char re;
-
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
     cout << "\nDo you want to play again (y/n) :- ";
     cin >> re;
 
@@ -176,8 +183,8 @@ int convertTurn()
 
 void board()
 {
-    // system("cls");
-
+    system("cls");
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
     cout << "--------- 4 in row ( By Viraj Mewal ) ---------" << endl
          << endl;
     for (int col = 0; col < 6; col++)
@@ -188,10 +195,12 @@ void board()
             {
                 if (i == 10)
                 {
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
                     cout << " ___ ";
                 }
                 else
                 {
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
                     cout << " ___";
                 }
             }
@@ -204,10 +213,12 @@ void board()
             case 0:
                 if (row == 0)
                 {
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
                     cout << "|   |";
                 }
                 else
                 {
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
                     cout << "   |";
                 }
                 break;
@@ -215,22 +226,38 @@ void board()
             case 1:
                 if (row == 0)
                 {
-                    cout << "| X |";
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
+                    cout << "| ";
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
+                    cout << "X";
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
+                    cout << " |";
                 }
                 else
                 {
-                    cout << " X |";
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
+                    cout << " X";
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
+                    cout << " |";
                 }
                 break;
 
             case 2:
                 if (row == 0)
                 {
-                    cout << "| O |";
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
+                    cout << "| ";
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+                    cout << "O";
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
+                    cout << " |";
                 }
                 else
                 {
-                    cout << " O |";
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+                    cout << " O";
+                    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
+                    cout << " |";
                 }
                 break;
 
@@ -244,10 +271,12 @@ void board()
         {
             if (i == 10)
             {
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
                 cout << " ___ ";
             }
             else
             {
+                SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
                 cout << " ___";
             }
         }
@@ -255,6 +284,7 @@ void board()
     }
     for (int i = 1; i <= 7; i++)
     {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 5);
         cout << "  " << i << " ";
     }
     cout << endl
